@@ -80,7 +80,7 @@ func GetStudentByID(id int) (Student, error){
 	val, err := config.RDB.Get(config.Ctx,key).Result()
 	if err == nil{
 		json.Unmarshal([]byte(val), &s)
-		log.Println("进行redis查询学号")
+		log.Println("进行Redis查询学号")
 		return s, nil
 	}
 
@@ -94,6 +94,7 @@ func GetStudentByID(id int) (Student, error){
 
 	data, _ := json.Marshal(s)
     config.RDB.Set(config.Ctx, key, data, 300*time.Second) 
+	log.Printf("从 MySQL 中获取了id:%d 学生数据，并写入 Redis 缓存",id)
 
 	return s,err
 }

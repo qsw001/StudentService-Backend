@@ -11,6 +11,8 @@ func main(){
 	//初始数据库
 	config.InitMySQL()  
 	config.InitRedis()
+	config.InitSecurekey()
+	
 	defer config.DB.Close()
 
 	//建立一个路由

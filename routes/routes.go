@@ -2,7 +2,7 @@ package routes
 
 import (
 	"student-service/controller"
-
+	"student-service/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,8 +17,11 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 
+	//加入JWT登陆路由
+	r.POST("/login",controller.Login)
+
 	// 创建一个以 /students 开头的路由组
-	studentGroup := r.Group("/students")
+	studentGroup := r.Group("/students",middleware.JWTAuthMiddleware())
 	{
 		studentGroup.GET("", controller.ListStudents)
 		studentGroup.POST("", controller.CreateStudent)
