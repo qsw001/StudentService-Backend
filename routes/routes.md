@@ -9,6 +9,8 @@ routes/
 
 ## 路由说明
 
+- /login            POST        获取token          controller.Login
+
 - /students	        GET	        查询所有学生	    controller.ListStudents
 - /students	        POST	    创建新学生	        controller.CreateStudent
 - /students/:id	    GET	        查询某个学生	    controller.GetStudent

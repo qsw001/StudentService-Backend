@@ -12,7 +12,7 @@ student-service/
 │   └── config.md
 │
 ├── controller/         # 控制器模块，处理 HTTP 请求
-│   ├── auth.go 
+│   ├── auth.go
 │   ├── student_c.go
 │   └── controller.md
 │
@@ -23,6 +23,10 @@ student-service/
 ├── models/             # 模型模块，封装数据库操作逻辑
 │   ├── student_m.go
 │   └── models.md
+│
+├── middleware/         # 加入中间层，解析并验证 token
+│   ├── auth.go
+│   └── middleware.md
 │
 ├── routes/             # 路由注册模块
 │   ├── routes.go

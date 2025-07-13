@@ -4,8 +4,10 @@
 
 ## 文件结构
 config/
-├── mysql.go         
-└── redis.go         
+├── config.md
+├── mysql.go  
+├── redis.go       
+└── securekey.go         
 
 
 ## Mysql数据库初始化(InitMySQL)
@@ -24,6 +26,10 @@ config/
 2.Redis 使用 `config.RDB` 和上下文 `config.Ctx`；
 3.默认连接本地 Redis 服务（localhost:6379）；
 4.用于缓存学生信息，加速系统读取；
+
+## 初始化查询密钥(InitSecurekey)
+
+加载并读取密钥
 
 ## 注释
 

@@ -133,5 +133,4 @@ func DeleteStudent(context *gin.Context){
     context.JSON(http.StatusOK,gin.H{
         "mess":"Succcessful DELETE",
     })
-
 }
