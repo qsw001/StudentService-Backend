@@ -4,6 +4,7 @@
 
 ## 项目结构说明
 
+```bash
 student-service/
 ├── config/             # 配置模块，MySQL 和 Redis 的初始化
 │   ├── mysql.go
