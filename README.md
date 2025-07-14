@@ -41,7 +41,7 @@ student-service/
 ├── go.mod              # Go Module 文件
 ├── go.sum              # Go sum 文件
 └── README.md           # 项目说明
-
+```
 
 ## 项目功能概述
 
