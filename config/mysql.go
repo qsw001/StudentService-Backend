@@ -4,6 +4,7 @@ import(
 	"database/sql"
 	_"github.com/go-sql-driver/mysql"
 	"log"
+	"time"
 )
 
 var DB *sql.DB
@@ -41,6 +42,10 @@ func InitMySQL(){
 	if err != nil{
 		log.Fatal("数据重新库连接失败：",err)
 	}
+
+	db.SetMaxOpenConns(50)
+	db.SetMaxIdleConns(10)
+	db.SetConnMaxLifetime(time.Hour)
 
 	err = db.Ping()
 	if err != nil{
