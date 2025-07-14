@@ -4,8 +4,10 @@ routes 模块负责初始化并配置 Gin 框架的路由映射关系。
 
 ## 文件结构
 
+```bash
 routes/
 └── routes.go
+```
 
 ## 路由说明
 
