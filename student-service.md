@@ -4,7 +4,7 @@
 
 ## 项目结构说明
 
-‵``bash
+```bash
 student-service/
 ├── config/             # 配置模块，MySQL 和 Redis 的初始化
 │   ├── mysql.go
@@ -37,6 +37,7 @@ student-service/
 ├── go.mod              # Go Module 文件
 ├── go.sum              # Go sum 文件
 └── README.md           # 项目说明
+```
 
 
 ## 项目功能概述
