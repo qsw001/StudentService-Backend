@@ -3,12 +3,13 @@
 本部分主要负责系统配置的初始化工作
 
 ## 文件结构
+```bash
 config/
 ├── config.md
 ├── mysql.go  
 ├── redis.go       
 └── securekey.go         
-
+```
 
 ## Mysql数据库初始化(InitMySQL)
 
