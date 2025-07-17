@@ -15,6 +15,8 @@ import (
 //处理逻辑
 //返回响应
 
+
+//获取所有学生
 func ListStudents(context *gin.Context){
 	students, err := models.GetAllStudents()
     if err != nil {
@@ -26,6 +28,8 @@ func ListStudents(context *gin.Context){
 	context.JSON(http.StatusOK, students)
 }
 
+
+//创建学生
 func CreateStudent(context *gin.Context){
     var student models.Student
     err := context.ShouldBindJSON(&student)
@@ -33,9 +37,10 @@ func CreateStudent(context *gin.Context){
         context.JSON(http.StatusBadRequest,gin.H{
             "error":"invalid JOSN",
         })
+        return
     }
 
-    id, err := models.CreateStudent(student)
+    err = models.CreateStudent(&student)//传递指针，优化操作
     if err != nil{
         context.JSON(http.StatusInternalServerError,gin.H{
             "error":err.Error(),
@@ -43,14 +48,13 @@ func CreateStudent(context *gin.Context){
         return
     }
 
-    student.ID = int(id)
-
     context.JSON(http.StatusCreated,gin.H{
         "message":"student created",
         "student":student,
     })
 }	
 
+//获取单个学生
 func GetStudent(context *gin.Context){
     id, err := strconv.Atoi(context.Param("id"))
     if err != nil{
@@ -71,6 +75,7 @@ func GetStudent(context *gin.Context){
     context.JSON(http.StatusOK,student)
 }
 
+//更新学生
 func UpdateStudent(context *gin.Context){
     id, err := strconv.Atoi(context.Param("id"))
     if err != nil{
@@ -91,7 +96,7 @@ func UpdateStudent(context *gin.Context){
     }   
 
     student.ID = id
-    err = models.UpdateStudent(student)
+    err = models.UpdateStudent(id,student)
 
     if err != nil{
         context.JSON(http.StatusInternalServerError,gin.H{
@@ -109,6 +114,7 @@ func UpdateStudent(context *gin.Context){
     })
 }
 
+//删除学生
 func DeleteStudent(context *gin.Context){
     id, err := strconv.Atoi(context.Param("id"))
     if err != nil{
