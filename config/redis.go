@@ -6,6 +6,7 @@ import (
     "log"
 
     "github.com/redis/go-redis/v9"
+    "time"
 )
 
 var RDB *redis.Client         // Redis 客户端（全局）
@@ -16,6 +17,10 @@ func InitRedis() {
         Addr:     "localhost:6379", // Redis 地址和端口
         Password: "",               // 没有设置密码
         DB:       0,                // 使用默认数据库 0
+
+        PoolSize:     20,               // 最大连接数（并发高的话调大）
+        MinIdleConns: 5,                // 最小空闲连接数
+        PoolTimeout:  3 * time.Second, // 等待连接超时时间
     })
 
     // 测试连接
@@ -23,6 +28,7 @@ func InitRedis() {
     if err != nil {
         log.Fatal("Redis 连接失败：", err)
     }
+    
 
     log.Println("Redis 连接成功！")
 }

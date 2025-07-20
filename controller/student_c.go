@@ -107,6 +107,7 @@ func UpdateStudent(context *gin.Context){
 
     //对redis清理
     utils.DeleteStudentCache(id)
+    utils.DeleteAllStudentsCache()
     
     context.JSON(http.StatusOK,gin.H{
         "mess":"student Update",
@@ -135,6 +136,7 @@ func DeleteStudent(context *gin.Context){
 
     //对redis清理
     utils.DeleteStudentCache(id)
+    utils.DeleteAllStudentsCache()
 
     context.JSON(http.StatusOK,gin.H{
         "mess":"Succcessful DELETE",
