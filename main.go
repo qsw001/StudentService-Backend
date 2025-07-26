@@ -7,10 +7,18 @@ import (
 	"student-service/models"
 	"fmt"
 	"time"
+	 "net/http"
+    _ "net/http/pprof" 
 )
 
 //以下的config与router为自己定义的包
 func main(){
+	go func() {
+        fmt.Println("pprof listening on :6060")
+        http.ListenAndServe("localhost:6060", nil)
+    }()
+
+
 	//初始数据库
 	config.InitMySQL()  
 	config.InitRedis()

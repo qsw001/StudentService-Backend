@@ -17,10 +17,13 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 
+	//注册日志
+	r.Use(middleware.AccessLog())
 	//加入JWT登陆路由
 	r.POST("/login",controller.Login)
 	//注册cros
 	r.Use(middleware.CORSMiddleware())
+	
 
 	// 创建一个以 /students 开头的路由组
 	studentGroup := r.Group("/students",middleware.JWTAuthMiddleware())
