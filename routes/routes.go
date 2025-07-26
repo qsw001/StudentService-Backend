@@ -17,12 +17,14 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 
-	//注册日志
+	//注册cros，cros注册要在登陆的前面，防止登陆时就出现跨域请求失败
+	r.Use(middleware.CORSMiddleware())
+
+	//注册日志，注册日志也要放在前面，可以记录所有的信息
 	r.Use(middleware.AccessLog())
+
 	//加入JWT登陆路由
 	r.POST("/login",controller.Login)
-	//注册cros
-	r.Use(middleware.CORSMiddleware())
 	
 
 	// 创建一个以 /students 开头的路由组
